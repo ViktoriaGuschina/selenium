@@ -7,7 +7,7 @@ version '1.0-SNAPSHOT'
 
 sourceCompatibility = 11
 
-// кодировка файлов (если используете русский язык в файлах)
+
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
@@ -17,12 +17,12 @@ repositories {
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.6.1'
-    testImplementation 'org.seleniumhq.selenium:selenium-java:4.18.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.27.0'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.7.0'
+    implementation 'org.seleniumhq.selenium:selenium-devtools-v130:4.27.0'
 }
-
 test {
     useJUnitPlatform()
-    // свойство chromeoptions.prefs используется для задания настроек браузера в проектах на основе Selenide, выключаем менеджер паролей
-    systemProperty 'chromeoptions.prefs', System.getProperty('chromeoptions.prefs', "profile.password_manager_leak_detection=false")
+
+    systemProperty 'selenide.headless', System.getProperty('selenide.headless')
 }
